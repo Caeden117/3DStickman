@@ -122,6 +122,13 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "eu.netherlands3d.filebrowser": {
+      "version": "https://github.com/Netherlands3D/twin.git?path=Packages/eu.netherlands3d.filebrowser",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5c3dc84dc9cd26586c0a6b527ea202df23de812b"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
