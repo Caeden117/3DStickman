@@ -7,7 +7,7 @@ namespace Stickman3D
     public class Animation
     {
         /// <summary>
-        /// Map of SceneNode path to a Resource path, pointing to a prefab to instantiate.
+        /// Map of object name to a Resource path, pointing to a prefab to instantiate.
         /// </summary>
         public Dictionary<string, string> ObjectMap { get; set; }
 

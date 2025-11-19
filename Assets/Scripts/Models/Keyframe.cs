@@ -13,7 +13,7 @@ namespace Stickman3D
         public float Time { get; set; }
 
         /// <summary>
-        /// Transformation matrix of the object at this keyframe.
+        /// Transformation matrix of the object at this keyframe, in local space (relative to its parent - *NOT* localToWorldMatrix).
         /// </summary>
         public Matrix4x4 Transform { get; set; }
 
