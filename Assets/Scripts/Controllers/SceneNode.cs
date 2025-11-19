@@ -1,24 +1,22 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 // Code largely taken from the example source code on GitHub, but I've made my own modifications
 [ExecuteInEditMode]
 public class SceneNode : MonoBehaviour {
 
-    protected Matrix4x4 mCombinedParentXform;
+    protected Matrix4x4 CombinedTransform;
     
     public Vector3 NodeOrigin = Vector3.zero;
 
-    private List<NodePrimitive> primitiveList = new();
-    private List<SceneNode> childrenList = new();
+    private readonly List<NodePrimitive> primitiveList = new();
+    private readonly List<SceneNode> childrenList = new();
     private bool isRoot = false;
 
 	// Use this for initialization
-	protected void Start ()
+	private void Start ()
     {
-        mCombinedParentXform = Matrix4x4.identity;
+        CombinedTransform = Matrix4x4.identity;
 
         // determine if this is a root node
         isRoot = transform.parent == null || !GetComponentInChildren<SceneNode>();
@@ -32,8 +30,7 @@ public class SceneNode : MonoBehaviour {
         foreach (Transform child in transform)
         {
             // gather scene nodes from children and assign them as such
-            var childNode = child.GetComponent<SceneNode>();
-            if (childNode != null)
+            if (child.TryGetComponent<SceneNode>(out var childNode))
             {
                 childrenList.Add(childNode);
                 continue;
@@ -57,7 +54,7 @@ public class SceneNode : MonoBehaviour {
     {
         if (isRoot)
         {
-            Matrix4x4 identity = Matrix4x4.identity;
+            var identity = Matrix4x4.identity;
             CompositeXform(ref identity);
         }
     }
@@ -65,18 +62,17 @@ public class SceneNode : MonoBehaviour {
     // This must be called _BEFORE_ each draw!!  @
     public void CompositeXform(ref Matrix4x4 parentXform)
     {
-        Matrix4x4 orgT = Matrix4x4.Translate(NodeOrigin);
-        Matrix4x4 trs = Matrix4x4.TRS(transform.localPosition, transform.localRotation, transform.localScale);
+        var orgT = Matrix4x4.Translate(NodeOrigin);
+        var trs = Matrix4x4.TRS(transform.localPosition, transform.localRotation, transform.localScale);
         
-        mCombinedParentXform = parentXform * orgT * trs;
+        CombinedTransform = parentXform * orgT * trs;
 
         // propagate to all children
-        foreach (SceneNode child in childrenList)
-            child.CompositeXform(ref mCombinedParentXform);
+        foreach (var child in childrenList)
+            child.CompositeXform(ref CombinedTransform);
         
         // disseminate to primitives
-        foreach (NodePrimitive p in primitiveList)
-            p.LoadShaderMatrix(ref mCombinedParentXform);
-
+        foreach (var primitive in primitiveList)
+            primitive.LoadShaderMatrix(ref CombinedTransform);
     }
 }
