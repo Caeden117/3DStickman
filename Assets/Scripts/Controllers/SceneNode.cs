@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using System.Collections.Generic;
 
 // Code largely taken from the example source code on GitHub, but I've made my own modifications
@@ -13,22 +12,19 @@ public class SceneNode : MonoBehaviour {
     private readonly List<NodePrimitive> primitiveList = new();
     private readonly List<SceneNode> childrenList = new();
     private bool isRoot = false;
+    private SceneNode parentNode = null;
 
 	// Use this for initialization
 	private void Start ()
     {
         CombinedTransform = Matrix4x4.identity;
 
-        // determine if this is a root node
-        isRoot = transform.parent == null || !GetComponentInChildren<SceneNode>();
-
-        // gather children and primitives
+        // gather primitives beneath this node
         foreach (Transform child in transform)
         {
-            // gather scene nodes from children and assign them as such
-            if (child.TryGetComponent<SceneNode>(out var childNode))
+            // Ignore children that are also scene nodes (they will gather their own primitives)
+            if (child.TryGetComponent<SceneNode>(out var _))
             {
-                childrenList.Add(childNode);
                 continue;
             }
 
@@ -39,10 +35,27 @@ public class SceneNode : MonoBehaviour {
                 primitiveList.AddRange(childPrimitives);
             }
         }
+
+        // determine if this is a root node
+        if (transform.parent == null)
+        {
+            isRoot = true;
+            return;
+        }
+
+        parentNode = transform.parent.GetComponentInParent<SceneNode>();
+        if (parentNode != null)
+        {
+            parentNode.RegisterChild(this);
+        }
+        else
+        {
+            isRoot = true;
+        }
     }
 
     /// <summary>
-    /// Clears the SceneNode by deleting all child SceneNodes and NodePrimitives.
+    /// Clears the SceneNode by deleting all child SceneNodes.
     /// </summary>
     public void ClearChildren()
     {
@@ -50,21 +63,13 @@ public class SceneNode : MonoBehaviour {
         {
             DestroyImmediate(child.gameObject);
         }
-
-        childrenList.Clear();
-        primitiveList.Clear();
     }
 
-    // start the composite process from the root node
-    // this is done on LateUpdate so scripts that modify transforms in Update() are accounted for
-    private void LateUpdate()
-    {
-        if (isRoot)
-        {
-            var identity = Matrix4x4.identity;
-            CompositeTransform(ref identity);
-        }
-    }
+    // Removes a child SceneNode from this node's list of children, should be called by the child node itself on destruction
+    protected void RemoveChild(SceneNode sceneNode) => childrenList.Remove(sceneNode);
+
+    // Adds a child SceneNode to this node's list of children, should be called by the child node itself on initialization
+    protected void RegisterChild(SceneNode sceneNode) => childrenList.Add(sceneNode);
 
     // Computes the transform matrix for this node, then propagates this matrix to all children and primitives.
     protected void CompositeTransform(ref Matrix4x4 parentXform)
@@ -81,5 +86,24 @@ public class SceneNode : MonoBehaviour {
         // disseminate to primitives
         foreach (var primitive in primitiveList)
             primitive.LoadShaderMatrix(ref CombinedTransform);
+    }
+
+    // start the composite process from the root node
+    // this is done on LateUpdate so scripts that modify transforms in Update() are accounted for
+    private void LateUpdate()
+    {
+        if (isRoot)
+        {
+            var identity = Matrix4x4.identity;
+            CompositeTransform(ref identity);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (parentNode != null)
+        {
+            parentNode.RemoveChild(this);
+        }
     }
 }
