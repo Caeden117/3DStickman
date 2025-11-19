@@ -50,9 +50,11 @@ namespace Stickman3D
             }
         };
 
+        private TimelineController timeline;
+
         private void Start()
         {
-            if (TryGetComponent<TimelineController>(out var timeline))
+            if (TryGetComponent(out timeline))
             {
                 timeline.LoadAnimation(debugAnimation);
                 timeline.IsPlaying = true;
@@ -61,7 +63,7 @@ namespace Stickman3D
 
         private void Update()
         {
-            if (TryGetComponent<TimelineController>(out var timeline) && timeline.CurrentSeconds > 5)
+            if (timeline != null && timeline.CurrentSeconds > 5)
             {
                 timeline.CurrentSeconds = 0;
             }
