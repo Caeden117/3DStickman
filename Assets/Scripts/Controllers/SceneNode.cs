@@ -43,15 +43,9 @@ public class SceneNode : MonoBehaviour {
 
     /// <summary>
     /// Clears the SceneNode by deleting all child SceneNodes and NodePrimitives.
-    /// This operation is only valid on the root SceneNode.
     /// </summary>
     public void ClearChildren()
     {
-        if (!isRoot)
-        {
-            throw new InvalidOperationException($"{nameof(ClearChildren)} can only be called on a root SceneNode.");
-        }
-
         foreach (var child in childrenList)
         {
             DestroyImmediate(child.gameObject);
