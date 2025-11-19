@@ -84,23 +84,38 @@ namespace Stickman3D
                 var objectName = kvp.Key;
                 var resourcePath = kvp.Value;
 
-                var prefab = Resources.Load<GameObject>(resourcePath);
-                if (prefab == null)
-                {
-                    Debug.LogWarning($"Failed to load prefab at Resource path '{resourcePath}' for SceneNode '{objectName}'.");
-                    continue;
-                }
+                // Instantiate object without adding to ObjectMap (already present)
+                CreateObject(objectName, resourcePath, false);
+            }
+        }
 
-                // Instantiate prefab under root node
-                var instance = Instantiate(prefab, rootNode.transform);
-                instance.name = objectName;
+        /// <summary>
+        /// Instantiates a prefab from Resources at <paramref name="resourcePath"/> under the root node with the given <paramref name="objectName"/>.
+        /// Optionally adds the object to the LoadedAnimation's ObjectMap.
+        /// </summary>
+        public void CreateObject(string objectName, string resourcePath, bool addToObjectMap = true)
+        {
+            var prefab = Resources.Load<GameObject>(resourcePath);
+            if (prefab == null)
+            {
+                Debug.LogWarning($"Failed to load prefab at Resource path '{resourcePath}' for SceneNode '{objectName}'.");
+                return;
+            }
+
+            // Instantiate prefab under root node
+            var instance = Instantiate(prefab, rootNode.transform);
+            instance.name = objectName;
+
+            if (addToObjectMap)
+            {
+                LoadedAnimation.ObjectMap[objectName] = resourcePath;
             }
         }
 
         /// <summary>
         /// Returns the list of Keyframes for the given SceneNode path.
         /// Because the list is passed by reference, modifications to the list will be reflected in the animation.
-        /// Returns null if no animation is loaded.
+        /// Returns null if no animation is loaded or if <paramref name="scenePath"/> is not in the KeyframeMap.
         /// </summary>
         public List<Keyframe> GetKeyframesForPath(string scenePath)
         {
