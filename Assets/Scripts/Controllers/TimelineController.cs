@@ -71,8 +71,9 @@ namespace Stickman3D
         {
             LoadedAnimation = animation;
 
-            // Clear cache
+            // Clear cache and root node
             sceneNodeMap.Clear();
+            rootNode.ClearChildren();
 
             if (LoadedAnimation.ObjectMap == null) return;
 
