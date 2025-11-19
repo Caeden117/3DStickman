@@ -74,11 +74,12 @@ namespace Stickman3D
             // Clear cache
             sceneNodeMap.Clear();
 
-            // Instantiate objects from ObjectMap
             if (LoadedAnimation.ObjectMap == null) return;
+
+            // Instantiate objects from ObjectMap
+            // Iterating over a Dictionary isn't the best but whatever
             foreach (var kvp in LoadedAnimation.ObjectMap)
             {
-                // Iterating over a Dictionary isn't the best but whatever
                 var objectName = kvp.Key;
                 var resourcePath = kvp.Value;
 
@@ -148,6 +149,7 @@ namespace Stickman3D
         {
             if (LoadedAnimation == null || LoadedAnimation.KeyframeMap == null) return;
 
+            // Iterating over a Dictionary isn't the best but whatever
             foreach (var kvp in LoadedAnimation.KeyframeMap)
             {
                 var scenePath = kvp.Key;
@@ -160,24 +162,21 @@ namespace Stickman3D
                 // While its faster on average to do a binary search, I'm opting for a linear search here
                 //   since most animations will have relatively few keyframes per object.
                 // If performance becomes an issue, this can be changed to binary search later.
-                int leftKeyframeIdx;
-                for (leftKeyframeIdx = 0; leftKeyframeIdx < keyframes.Count; leftKeyframeIdx++)
+                int rightKeyframeIdx;
+                for (rightKeyframeIdx = 0; rightKeyframeIdx < keyframes.Count; rightKeyframeIdx++)
                 {
-                    if (keyframes[leftKeyframeIdx].Time <= time)
+                    if (keyframes[rightKeyframeIdx].Time > time)
                     {
-                        continue;
+                        break;
                     }
-
-                    break;
                 }
-                var rightKeyframeIdx = Mathf.Clamp(leftKeyframeIdx + 1, 0, keyframes.Count);
+                var leftKeyframeIdx = rightKeyframeIdx - 1;
 
-                var leftKeyframe = keyframes[leftKeyframeIdx];
-                var rightKeyframe = keyframes[rightKeyframeIdx];
+                var leftKeyframe = keyframes[Mathf.Clamp(leftKeyframeIdx, 0, keyframes.Count - 1)];
+                var rightKeyframe = keyframes[Mathf.Clamp(rightKeyframeIdx, 0, keyframes.Count - 1)];
 
+                // Interpolate between the two keyframes if necessary
                 var matrix = leftKeyframe.Transform;
-
-                // Interpolate between the two keyframes
                 if (leftKeyframeIdx != rightKeyframeIdx)
                 {
                     var t = (time - leftKeyframe.Time) / (rightKeyframe.Time - leftKeyframe.Time);
