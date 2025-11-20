@@ -4,7 +4,7 @@ namespace Stickman3D
 {
     public static class MatrixUtils
     {
-        public static Matrix4x4 Lerp(Matrix4x4 from, Matrix4x4 to, float t)
+        public static Matrix4x4 Lerp(in Matrix4x4 from, in Matrix4x4 to, float t)
         {
             // Decompose 'from' matrix
             var fromPosition = from.GetColumn(3); // Position is in the last column
