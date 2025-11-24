@@ -65,6 +65,31 @@ public class SceneNode : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Returns the path of this SceneNode relative to the given root SceneNode.
+    /// </summary>
+    public string GetScenePathRelativeTo(SceneNode sceneTreeRoot)
+    {
+        if (sceneTreeRoot == null || sceneTreeRoot == this)
+        {
+            return gameObject.name;
+        }
+
+        // Use a stack to build the path from this node up to the root
+        // then join the stack into a string
+        var pathStack = new Stack<string>();
+        var currentNode = this;
+        while (currentNode != null && currentNode != sceneTreeRoot)
+        {
+            pathStack.Push(currentNode.gameObject.name);
+            currentNode = currentNode.parentNode;
+        }
+
+        return currentNode != sceneTreeRoot
+            ? null
+            : string.Join("/", pathStack);
+    }
+
     // Removes a child SceneNode from this node's list of children, should be called by the child node itself on destruction
     protected void RemoveChild(SceneNode sceneNode) => childrenList.Remove(sceneNode);
 

@@ -134,6 +134,11 @@ namespace Stickman3D
         }
 
         /// <summary>
+        /// Gets the path of the given SceneNode relative to the root node, or null if none exists.
+        /// </summary>
+        public string GetPathForNode(SceneNode node) => node.GetScenePathRelativeTo(rootNode);
+
+        /// <summary>
         /// Gets the SceneNode at the given path, or null if not found.
         /// </summary>
         public SceneNode GetNodeAtPath(string scenePath)
