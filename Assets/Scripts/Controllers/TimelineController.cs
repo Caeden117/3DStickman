@@ -57,8 +57,9 @@ namespace Stickman3D
         #region Animation Management
         public Animation LoadedAnimation { get; private set; }
 
-        // Root SceneNode to hold animation, exposed in inspector
+        // Root SceneNode prefab to hold initial animation state, exposed in inspector
         [SerializeField]
+        private SceneNode rootNodePrefab;
         private SceneNode rootNode;
 
         // SceneNode path cache
@@ -71,9 +72,14 @@ namespace Stickman3D
         {
             LoadedAnimation = animation;
 
-            // Clear cache and root node
+            // Clear cache and regenerate root node
             sceneNodeMap.Clear();
-            rootNode.ClearChildren();
+            
+            if (rootNode != null)
+            {
+                DestroyImmediate(rootNode.gameObject);
+            }
+            rootNode = Instantiate(rootNodePrefab, Vector3.zero, Quaternion.identity);
 
             if (LoadedAnimation.ObjectMap == null) return;
 

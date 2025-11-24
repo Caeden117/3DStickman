@@ -119,51 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &262413708
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 262413710}
-  - component: {fileID: 262413709}
-  m_Layer: 0
-  m_Name: SceneNode Root
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &262413709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262413708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Stickman3D::SceneNode
-  NodeOrigin: {x: 0, y: 0, z: 0}
---- !u!4 &262413710
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262413708}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &488300540
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +339,7 @@ GameObject:
   - component: {fileID: 888422663}
   - component: {fileID: 888422665}
   m_Layer: 0
-  m_Name: TimelineController
+  m_Name: Timeline Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c91f2e1852263442a5d7ced199d6751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Stickman3D::Stickman3D.TimelineController
-  rootNode: {fileID: 262413709}
+  rootNodePrefab: {fileID: 2647697078480358113, guid: 94d2fe05d4cfd534ba9339d772d616f6, type: 3}
 --- !u!4 &888422664
 Transform:
   m_ObjectHideFlags: 0
@@ -412,7 +367,7 @@ Transform:
   m_GameObject: {fileID: 888422662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.35577, y: 0, z: -0.17318}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -539,6 +494,51 @@ MonoBehaviour:
   tumbleSpeed: 360
   trackSpeed: 50
   dollySpeed: 250
+--- !u!1 &1566749226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566749228}
+  - component: {fileID: 1566749227}
+  m_Layer: 0
+  m_Name: Timeline Editor Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1566749227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566749226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e54126d2e469b54e9fa486a63f324f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Stickman3D::Stickman3D.TimelineEditorController
+  timelineController: {fileID: 888422663}
+--- !u!4 &1566749228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566749226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1873519407
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,5 +659,5 @@ SceneRoots:
   - {fileID: 488300544}
   - {fileID: 705507995}
   - {fileID: 1873519411}
-  - {fileID: 262413710}
   - {fileID: 888422664}
+  - {fileID: 1566749228}

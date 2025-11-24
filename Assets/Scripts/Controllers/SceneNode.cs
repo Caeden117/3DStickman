@@ -55,17 +55,6 @@ public class SceneNode : MonoBehaviour {
     }
 
     /// <summary>
-    /// Clears the SceneNode by deleting all child SceneNodes.
-    /// </summary>
-    public void ClearChildren()
-    {
-        foreach (var child in childrenList)
-        {
-            DestroyImmediate(child.gameObject);
-        }
-    }
-
-    /// <summary>
     /// Returns the path of this SceneNode relative to the given root SceneNode.
     /// </summary>
     public string GetScenePathRelativeTo(SceneNode sceneTreeRoot)
