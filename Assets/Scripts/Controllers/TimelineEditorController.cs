@@ -30,7 +30,7 @@ namespace Stickman3D
         private string selectedObjPath;
         private List<Keyframe> selectedObjKeyframes;
 
-        public bool InsertKeyframe(Keyframe keyframe)
+        public bool InsertKeyframe(in Keyframe keyframe)
         {
             if (selectedObjKeyframes == null)
             {
@@ -40,22 +40,21 @@ namespace Stickman3D
 
             var insertIndex = selectedObjKeyframes.BinarySearch(keyframe);
 
+            // Insert or overwrite depending on whether a keyframe at this time already exists
             if (insertIndex < 0)
             {
-                // Keyframe does not already exist at this time, insert it
                 insertIndex = ~insertIndex;
                 selectedObjKeyframes.Insert(insertIndex, keyframe);
-                return true;
             }
             else
             {
-                // Keyframe already exists. Because duplicates arent allowed, overwrite
                 selectedObjKeyframes[insertIndex] = keyframe;
-                return true;
             }
+
+            return true;
         }
 
-        public bool RemoveKeyframe(Keyframe keyframe)
+        public bool RemoveKeyframe(in Keyframe keyframe)
         {
             if (selectedObjKeyframes == null)
             {
@@ -75,6 +74,18 @@ namespace Stickman3D
                 // Keyframe not found
                 return false;
             }
+        }
+
+        public bool MoveKeyframe(ref Keyframe keyframe, float newTime)
+        {
+            if (!RemoveKeyframe(keyframe))
+            {
+                return false;
+            }
+
+            keyframe.Time = newTime;
+
+            return InsertKeyframe(keyframe);
         }
     }
 }
