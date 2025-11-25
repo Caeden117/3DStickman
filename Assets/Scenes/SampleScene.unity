@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 488300543}
   - component: {fileID: 488300542}
   - component: {fileID: 488300541}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Look-At Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
