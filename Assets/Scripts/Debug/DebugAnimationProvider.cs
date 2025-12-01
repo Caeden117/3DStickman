@@ -57,15 +57,7 @@ namespace Stickman3D
             if (TryGetComponent(out timeline))
             {
                 timeline.LoadAnimation(debugAnimation);
-                timeline.IsPlaying = true;
-            }
-        }
-
-        private void Update()
-        {
-            if (timeline != null && timeline.CurrentSeconds > 5)
-            {
-                timeline.CurrentSeconds = 0;
+                //timeline.IsPlaying = true;
             }
         }
     }

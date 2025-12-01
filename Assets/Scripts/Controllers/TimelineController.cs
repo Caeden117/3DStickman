@@ -226,9 +226,9 @@ namespace Stickman3D
         {
             if (isPlaying)
             {
-                currentTime += Time.deltaTime;
-                InterpolateAnimation(currentTime);
+                currentTime = Mathf.Repeat(currentTime + Time.deltaTime, LoadedAnimation.Length);
             }
+            InterpolateAnimation(currentTime);
         }
     }
 }
