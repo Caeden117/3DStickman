@@ -244,7 +244,6 @@ namespace Stickman3D
                     trackObject.Keyframes = keyframeMap[path];
                     trackObject.OnKeyframeClick.AddListener(delegate (Keyframe keyframe)
                     {
-                        Debug.Log("Clicked keyframe: " + keyframe.Time);
                         keyframeEditorController.SetCurrent(path, keyframe);
                     });
                     trackObjects.Add(path, trackObject);
