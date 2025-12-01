@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Stickman3D
 {
@@ -76,6 +77,47 @@ namespace Stickman3D
             keyframe.Time = newTime;
 
             return InsertKeyframe(path, keyframe);
+        }
+
+        // Internal Newtonsoft.Json callback invoked after deserialization is complete.
+        [OnDeserialized]
+        public void OnDeserialized(StreamingContext context)
+        {
+            // Ensure Keyframe lists are sorted after deserialization.
+            if (KeyframeMap != null)
+            {
+                foreach (var key in KeyframeMap.Keys)
+                {
+                    KeyframeMap[key].Sort();
+                }
+            }
+
+            // Initializes the Length property to fit all keyframes.
+            ResetLength();
+        }
+
+        /// <summary>
+        /// Resets the length of the animation to fit all keyframes.
+        /// </summary>
+        public void ResetLength()
+        {
+            var maxTime = 0f;
+
+            if (KeyframeMap != null)
+            {
+                foreach (var keyframeList in KeyframeMap.Values)
+                {
+                    if (keyframeList == null || keyframeList.Count == 0) continue;
+
+                    var lastKeyframe = keyframeList[^1];
+                    if (lastKeyframe.Time > maxTime)
+                    {
+                        maxTime = lastKeyframe.Time;
+                    }
+                }
+            }
+
+            Length = Mathf.Max(1.0f, maxTime);
         }
     }
 }

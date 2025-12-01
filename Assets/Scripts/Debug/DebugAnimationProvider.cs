@@ -54,6 +54,8 @@ namespace Stickman3D
 
         private void Start()
         {
+            debugAnimation.ResetLength();
+
             if (TryGetComponent(out timeline))
             {
                 timeline.LoadAnimation(debugAnimation);
