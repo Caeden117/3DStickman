@@ -46,6 +46,24 @@ namespace Stickman3D
                             Transform = Matrix4x4.identity
                         }
                     }
+                },
+                {
+                    "Animation Camera", new()
+                    {
+                        new()
+                        {
+                            Time = 0,
+                            Transform = Matrix4x4.TRS(new(3, 3, -4), Quaternion.Euler(30, -30, 0), Vector3.one)
+                        },
+                        new()
+                        {
+                            Time = 5,
+                            Transform = Matrix4x4.TRS(new(4, 3, 3), Quaternion.Euler(30, -120, 0), Vector3.one)
+                        }
+                    }
+                },
+                {
+                    "Point Light", new()
                 }
             }
         };

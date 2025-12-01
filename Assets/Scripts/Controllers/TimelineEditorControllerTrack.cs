@@ -21,6 +21,15 @@ namespace Stickman3D
         [SerializeField]
         private LayoutElement labelLayoutElement = null;
 
+        [SerializeField]
+        private Image backgroundImage = null;
+
+        [SerializeField]
+        private Color evenBackgroundColor = Color.white;
+
+        [SerializeField]
+        private Color oddBackgroundColor = Color.gray;
+
         private List<Keyframe> keyframes = new List<Keyframe>();
 
         public List<Keyframe> Keyframes
@@ -89,6 +98,9 @@ namespace Stickman3D
             {
                 labelLayoutElement.minWidth = pathLabelWidth;
             }
+
+            // Theres a header spacer at index 0 so we offset by 1
+            backgroundImage.color = ((transform.GetSiblingIndex() - 1) % 2 == 0) ? evenBackgroundColor : oddBackgroundColor;
         }
 
         private void Update()

@@ -145,6 +145,9 @@ MonoBehaviour:
   textLabel: {fileID: 3745752440955526206}
   keyframeRoot: {fileID: 157346790637386903}
   labelLayoutElement: {fileID: 2950693980441659351}
+  backgroundImage: {fileID: 6569569205468550473}
+  evenBackgroundColor: {r: 0.8, g: 0.5254902, b: 0.5254902, a: 0.7019608}
+  oddBackgroundColor: {r: 0.6, g: 0.39411768, b: 0.39411768, a: 0.7019608}
 --- !u!1 &1820848402091248067
 GameObject:
   m_ObjectHideFlags: 0
