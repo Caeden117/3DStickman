@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Stickman3D
 {
     [JsonObject(MemberSerialization.OptOut)]
-    public struct Keyframe : IComparable<Keyframe>, IEquatable<Keyframe>
+    public struct Keyframe : IComparable, IComparable<Keyframe>, IEquatable<Keyframe>
     {
         /// <summary>
         /// Keyframe time, in seconds.
@@ -17,11 +17,28 @@ namespace Stickman3D
         /// </summary>
         public Matrix4x4 Transform { get; set; }
 
+        #region Comparison / Equality Overrides
         // Implements IEquatable<Keyframe>
         public readonly bool Equals(Keyframe other) => CompareTo(other) == 0;
 
         // Implements IComparable<Keyframe>
         // Compares keyframes based on their Time property. Used for sorting and enforcing uniqueness (Times must be unique)
         public readonly int CompareTo(Keyframe other) => Time.CompareTo(other.Time);
+
+        // Implements IComparable
+        public readonly int CompareTo(object obj) => obj is Keyframe otherKeyframe ? CompareTo(otherKeyframe) : 1;
+
+        // Overrides Object.Equals
+        public override readonly bool Equals(object obj) => obj is Keyframe otherKeyframe && Equals(otherKeyframe);
+
+        // Overrides Object.GetHashCode
+        public override readonly int GetHashCode() => Time.GetHashCode();
+
+        // Overrides equality operator
+        public static bool operator ==(Keyframe left, Keyframe right) => left.Equals(right);
+
+        // Overrides inequality operator
+        public static bool operator !=(Keyframe left, Keyframe right) => !(left == right);
+        #endregion
     }
 }

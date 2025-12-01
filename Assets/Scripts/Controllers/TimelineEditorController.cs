@@ -59,6 +59,9 @@ namespace Stickman3D
         [SerializeField]
         private TimelineController timelineController;
 
+        [SerializeField]
+        private HistoryController historyController;
+
         /// <summary>
         /// The pixel resolution per second at the default zoom (1.0f).
         /// </summary>
@@ -117,8 +120,7 @@ namespace Stickman3D
             });
             keyframeEditorController.OnKeyframeChanged.AddListener(delegate (string path, Keyframe oldKeyframe, Keyframe newKeyframe)
             {
-                timelineController.LoadedAnimation.RemoveKeyframe(path, oldKeyframe);
-                timelineController.LoadedAnimation.InsertKeyframe(path, newKeyframe);
+                historyController.ExecuteCommand(new KeyframeEditCommand(timelineController.LoadedAnimation, keyframeEditorController, path, oldKeyframe, newKeyframe));
             });
 
             // rejrfwrfegserhnrjebng HACK remember to set this when loaded animation length changes (NEED TO REWRITE TO USE EVENTS)
