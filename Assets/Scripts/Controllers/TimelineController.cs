@@ -229,6 +229,39 @@ namespace Stickman3D
                 currentTime = Mathf.Repeat(currentTime + Time.deltaTime, LoadedAnimation.Length);
             }
             InterpolateAnimation(currentTime);
+            HandleInput();
+        }
+
+        private void HandleInput()
+        {
+            // Playback toggle
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                IsPlaying = !IsPlaying;
+            }
+
+            // Frame stepping
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                CurrentFrame--;
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                CurrentFrame++;
+            }
+
+            // Jump to start/end
+            if (Input.GetKeyDown(KeyCode.LeftBracket))
+            {
+                CurrentSeconds = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.RightBracket))
+            {
+                if (LoadedAnimation != null)
+                {
+                    CurrentSeconds = LoadedAnimation.Length;
+                }
+            }
         }
     }
 }
