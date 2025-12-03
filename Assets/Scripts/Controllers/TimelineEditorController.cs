@@ -282,6 +282,9 @@ namespace Stickman3D
                 // remap mousePosition.x between positionMin and positionMax to timeOffsetStart and timeOffsetEnd
                 var pos = timeOffsetStart + ((mousePositionX - positionMin) * (timeOffsetEnd - timeOffsetStart) / (positionMax - positionMin));
                 timelineController.CurrentSeconds = pos;
+
+                // snap to nearest keyframe
+                timelineController.CurrentFrame = timelineController.CurrentFrame;
             }
 
             if (Input.GetKey(KeyCode.LeftShift) && (Input.mouseScrollDelta.y != 0.0f) && IsMouseHover(scrollArea, false))
