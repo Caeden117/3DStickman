@@ -44,6 +44,12 @@ namespace Stickman3D
                 KeyframeMap[path][index] = keyframe;
             }
 
+            // automatically resize animation length if needed
+            if (keyframe.Time > Length)
+            {
+                Length = keyframe.Time;
+            }
+
             return true;
         }
 
@@ -65,6 +71,23 @@ namespace Stickman3D
 
             KeyframeMap[path].RemoveAt(index);
             return true;
+        }
+
+        public Keyframe? FindKeyframeAtTime(string path, float time)
+        {
+            if (!KeyframeMap.ContainsKey(path))
+            {
+                Debug.Log("Could not check keyframe: path \'" + path + "\' does not exist!");
+                return null;
+            }
+
+            // Create a dummy keyframe and perform a binary search
+            // (this works because keyframes only care about time for comparison).
+            var dummyKeyframe = new Keyframe { Time = time };
+            var index = KeyframeMap[path].BinarySearch(dummyKeyframe);
+            return index >= 0
+                ? KeyframeMap[path][index]
+                : null;
         }
 
         public bool MoveKeyframe(string path, ref Keyframe keyframe, float newTime)

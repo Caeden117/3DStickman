@@ -204,7 +204,7 @@ namespace Stickman3D
 
                 // Interpolate between the two keyframes if necessary
                 var matrix = leftKeyframe.Transform;
-                if (leftKeyframeIdx != rightKeyframeIdx)
+                if (leftKeyframeIdx != rightKeyframeIdx && !MatrixUtils.IsApproximatelyEqual(leftKeyframe.Transform, rightKeyframe.Transform))
                 {
                     var t = (time - leftKeyframe.Time) / (rightKeyframe.Time - leftKeyframe.Time);
                     matrix = MatrixUtils.Lerp(leftKeyframe.Transform, rightKeyframe.Transform, t);
