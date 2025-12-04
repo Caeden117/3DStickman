@@ -119,27 +119,6 @@ namespace Stickman3D
         }
 
         /// <summary>
-        /// Returns the list of Keyframes for the given SceneNode path.
-        /// Because the list is passed by reference, modifications to the list will be reflected in the animation.
-        /// Returns null if no animation is loaded or if <paramref name="scenePath"/> is not in the KeyframeMap.
-        /// </summary>
-        public List<Keyframe> GetKeyframesForPath(string scenePath)
-        {
-            if (LoadedAnimation == null || LoadedAnimation.KeyframeMap == null)
-            {
-                return null;
-            }
-
-            if (!LoadedAnimation.KeyframeMap.TryGetValue(scenePath, out var keyframes))
-            {
-                keyframes = new();
-                LoadedAnimation.KeyframeMap[scenePath] = keyframes;
-            }
-
-            return keyframes;
-        }
-
-        /// <summary>
         /// Gets the path of the given SceneNode relative to the root node, or null if none exists.
         /// </summary>
         public string GetPathForNode(SceneNode node) => node.GetScenePathRelativeTo(rootNode);

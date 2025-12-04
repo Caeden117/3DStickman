@@ -26,7 +26,7 @@ namespace Stickman3D
         #region Saving
         // Invokes UniTask to save the animation asynchronously.
         // UniTask will handle the method internally so we can forget about it here.
-        private void OpenSavePanel()
+        public void OpenSavePanel()
             => StandaloneFileBrowser.SaveFilePanelAsync("Save Animation", "", "animation.json", "json", path => SaveAnimationAsync(path).Forget());
 
         // Asynchronously saves the current animation to the specified path.
@@ -59,7 +59,7 @@ namespace Stickman3D
 
         #region Loading
         // Invokes UniTask to load the animation asynchronously.
-        private void OpenOpenPanel()
+        public void OpenOpenPanel()
             => StandaloneFileBrowser.OpenFilePanelAsync("Open Animation", "", "json", false, paths => LoadAnimationAsync(paths).Forget());
 
         private async UniTask LoadAnimationAsync(string[] paths)
