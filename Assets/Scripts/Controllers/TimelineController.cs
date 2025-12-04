@@ -119,6 +119,29 @@ namespace Stickman3D
         }
 
         /// <summary>
+        /// Removes a SceneNode from the scene and from the LoadedAnimation's ObjectMap and KeyframeMap.
+        /// </summary>
+        public void DeleteObject(string objectName)
+        {
+            // Remove SceneNode from scene
+            var node = GetNodeAtPath(objectName);
+            if (node != null)
+            {
+                DestroyImmediate(node.gameObject);
+            }
+
+            // Remove from Animation maps
+            if (LoadedAnimation.ObjectMap.ContainsKey(objectName))
+            {
+                LoadedAnimation.ObjectMap.Remove(objectName);
+            }
+            if (LoadedAnimation.KeyframeMap.ContainsKey(objectName))
+            {
+                LoadedAnimation.KeyframeMap.Remove(objectName);
+            }
+        }
+
+        /// <summary>
         /// Gets the path of the given SceneNode relative to the root node, or null if none exists.
         /// </summary>
         public string GetPathForNode(SceneNode node) => node.GetScenePathRelativeTo(rootNode);

@@ -10,13 +10,14 @@ namespace Stickman3D
 
         public async UniTask GeneratePreview(GameObject gameObjectPrefab, RenderTexture outputTexture)
         {
+            // Make an instance of the prefab for rendering
             var instantiate = Instantiate(gameObjectPrefab, transform, false);
 
             // Wait a frame to ensure all transforms and components are initialized
             await UniTask.Yield();
 
+            // Focus the camera on the instantiated object and render to the output texture
             FocusCameraOn(instantiate);
-
             renderingCamera.targetTexture = outputTexture;
             renderingCamera.Render();
             renderingCamera.targetTexture = null;
@@ -24,6 +25,7 @@ namespace Stickman3D
             // Wait another frame to ensure rendering is complete
             await UniTask.Yield();
 
+            // Clean up the instantiated object
             DestroyImmediate(instantiate);
         }
 
@@ -31,6 +33,7 @@ namespace Stickman3D
         {
             var objectBounds = default(Bounds);
 
+            // Calculate the combined bounds of all renderers in the object, used for positioning the camera
             var allRenderers = gameObject.GetComponentsInChildren<Renderer>(); 
             if (allRenderers != null && allRenderers.Length > 0)
             {
@@ -43,10 +46,11 @@ namespace Stickman3D
             var objectCenter = objectBounds.center;
             var objectSize = objectBounds.extents.magnitude;
 
+            // Calculate the distance the camera needs to be to fit the object in view (with some padding)
             var distance = objectSize * objectPadding / Mathf.Tan(Mathf.Deg2Rad * renderingCamera.fieldOfView / 2f);
 
+            // Position the camera to look at the center of the object from the calculated distance
             var cameraPosition = objectCenter - (distance * renderingCamera.transform.forward);
-
             renderingCamera.transform.localPosition = cameraPosition;
         }
     }

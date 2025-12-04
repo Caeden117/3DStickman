@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -232,7 +229,7 @@ namespace Stickman3D
             // Remove deleted tracks.
             foreach (var path in keyframeMap.Keys)
             {
-                if (!keyframeMap.ContainsKey(path) || hardRefresh)
+                if ((!keyframeMap.ContainsKey(path) || hardRefresh) && trackObjects.ContainsKey(path))
                 {
                     DestroyImmediate(trackObjects[path].gameObject);
                     trackObjects.Remove(path);

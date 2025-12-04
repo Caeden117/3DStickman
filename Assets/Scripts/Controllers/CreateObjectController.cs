@@ -16,6 +16,7 @@ namespace Stickman3D
 
         [Header("Object Creation")]
         [SerializeField] private TimelineController timelineController;
+        [SerializeField] private HistoryController historyController;
 
         private SceneNode[] objectsInResouces;
         private readonly List<RenderTexture> previewTextures = new();
@@ -52,7 +53,6 @@ namespace Stickman3D
             }
         }
 
-        // TODO(Caeden): Turn into ICommand for undo/redo support
         private void CreateObject(SceneNode sceneNode)
         {
             // By default, resource path is simply the name of the GameObject
@@ -73,9 +73,8 @@ namespace Stickman3D
                 ? resourcePath
                 : $"{resourcePath} ({foundDuplicates})";
 
-            // Create the object in the timeline controller and assign a default keyframe list
-            timelineController.CreateObject(objectName, resourcePath);
-            timelineController.LoadedAnimation.KeyframeMap[objectName] = new List<Keyframe>();
+            // Execute the creation action in the history controller
+            historyController.ExecuteCommand(new ObjectAddCommand(timelineController, objectName, resourcePath));
         }
 
         private void OnDestroy()
