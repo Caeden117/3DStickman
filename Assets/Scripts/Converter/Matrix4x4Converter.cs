@@ -11,8 +11,6 @@ namespace Stickman3D
     /// </summary>
     public sealed class Matrix4x4Converter : JsonConverter<Matrix4x4>
     {
-        private const int matrixSize = 16;
-
         public override Matrix4x4 ReadJson(JsonReader reader, Type objectType, Matrix4x4 existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             ref var matrix = ref existingValue;
@@ -20,19 +18,18 @@ namespace Stickman3D
             // Early return if we are at the start of an array
             if (reader.TokenType != JsonToken.StartArray) return matrix;
 
-            var floatsRead = 0;
-
-            // Continue reading the array until we either hit the end of the array OR have read enough data to fill an entire matrix
-            while (reader.Read() && reader.TokenType != JsonToken.EndArray && floatsRead < matrixSize)
+            for (var row = 0; row < 4; row++)
             {
-                // Unfortunately ReadAsSingle() doesnt exist so we have to read as a double, then cast to float
-                var arrayValue = reader.ReadAsDouble();
-                if (arrayValue != null)
+                for (var col = 0; col < 4; col++)
                 {
-                    matrix[floatsRead] = (float)arrayValue.Value;
+                    if (reader.TokenType == JsonToken.EndArray) break;
+
+                    matrix[row, col] = (float)reader.ReadAsDouble();
                 }
-                floatsRead++;
             }
+
+            // Read the EndArray token
+            reader.Read();
 
             return matrix;
         }
@@ -42,9 +39,12 @@ namespace Stickman3D
         {
             writer.WriteStartArray();
 
-            for (var i = 0; i < matrixSize; i++)
+            for (var row = 0; row < 4; row++)
             {
-                writer.WriteValue(value[i]);
+                for (var col = 0; col < 4; col++)
+                {
+                    writer.WriteValue(value[row, col]);
+                }
             }
 
             writer.WriteEndArray();

@@ -41,16 +41,11 @@ namespace Stickman3D
             // We are executing on the main Unity thread by default. Switch to a thread pool so these operations don't cause lag.
             await UniTask.SwitchToThreadPool();
 
-            var file = new FileInfo(path);
-            var writeStream = file.OpenWrite();
-
             // Serialize loaded animation to JSON
             var animation = timelineController.LoadedAnimation;
             var animationJson = JsonConvert.SerializeObject(animation, Formatting.None, new Matrix4x4Converter());
 
-            // Write JSON to file
-            using var streamWriter = new StreamWriter(writeStream);
-            await streamWriter.WriteAsync(animationJson);
+            await File.WriteAllTextAsync(path, animationJson);
 
             // Finally (just for good practice), switch back to the main thread.
             await UniTask.SwitchToMainThread();
@@ -73,12 +68,8 @@ namespace Stickman3D
             // Switch to thread pool for reading and deserializing
             await UniTask.SwitchToThreadPool();
 
-            var file = new FileInfo(paths[0]);
-            var readStream = file.OpenRead();
-
             // Read JSON from file
-            using var streamReader = new StreamReader(readStream);
-            var animationJson = await streamReader.ReadToEndAsync();
+            var animationJson = await File.ReadAllTextAsync(paths[0]);
             
             // Deserialize JSON to Animation object
             var animation = JsonConvert.DeserializeObject<Animation>(animationJson, new Matrix4x4Converter());
