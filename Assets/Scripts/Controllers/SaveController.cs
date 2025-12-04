@@ -9,6 +9,7 @@ namespace Stickman3D
     public class SaveController : MonoBehaviour
     {
         [SerializeField] private TimelineController timelineController;
+        [SerializeField] private HistoryController historyController;
 
         private void Update()
         {
@@ -79,6 +80,8 @@ namespace Stickman3D
             await UniTask.SwitchToMainThread();
 
             // Load the animation into the timeline controller.
+            // Clears command history since all previous commands are no longer relevant.
+            historyController.Clear();
             timelineController.LoadAnimation(animation);
         }
         #endregion
