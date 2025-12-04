@@ -104,6 +104,8 @@ namespace Stickman3D
             }
         }
 
+        private Animation cachedAnimation;
+
         private void Start()
         {
             buttonPlay.onClick.AddListener(delegate {
@@ -224,13 +226,15 @@ namespace Stickman3D
             // Refresh tracks.
 
             var keyframeMap = timelineController.LoadedAnimation.KeyframeMap;
+            var hardRefresh = cachedAnimation != null && cachedAnimation != timelineController.LoadedAnimation;
+            cachedAnimation = timelineController.LoadedAnimation;
 
             // Remove deleted tracks.
             foreach (var path in keyframeMap.Keys)
             {
-                if (!keyframeMap.ContainsKey(path))
+                if (!keyframeMap.ContainsKey(path) || hardRefresh)
                 {
-                    Destroy(trackObjects[path].gameObject);
+                    DestroyImmediate(trackObjects[path].gameObject);
                     trackObjects.Remove(path);
                 }
             }
@@ -238,7 +242,7 @@ namespace Stickman3D
             // Add new track objects.
             foreach (var path in keyframeMap.Keys)
             {
-                if (!trackObjects.ContainsKey(path))
+                if (!trackObjects.ContainsKey(path) || hardRefresh)
                 {
                     var trackInstance = Instantiate(trackPrefab, trackRoot);
                     var trackObject = trackInstance.GetComponent<TimelineEditorControllerTrack>();
