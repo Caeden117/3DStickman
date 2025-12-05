@@ -4,22 +4,22 @@ namespace Stickman3D
 {
     public class CameraBillboard : MonoBehaviour
     {
-        private static Transform mainCameraTransform;
+        public Transform CameraTransform;
 
         private void Start()
         {
-            if (mainCameraTransform == null)
+            if (CameraTransform == null)
             {
-                mainCameraTransform = Camera.main.transform;
+                CameraTransform = Camera.main.transform;
             }
         }
 
         private void LateUpdate()
         {
-            if (mainCameraTransform != null)
+            if (CameraTransform != null)
             {
-                transform.up = mainCameraTransform.up;
-                transform.forward = mainCameraTransform.forward;
+                transform.up = CameraTransform.up;
+                transform.forward = CameraTransform.forward;
             }
         }
     }

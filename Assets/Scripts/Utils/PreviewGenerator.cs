@@ -13,6 +13,13 @@ namespace Stickman3D
             // Make an instance of the prefab for rendering
             var instantiate = Instantiate(gameObjectPrefab, transform, false);
 
+            // Set up camera billboard components to face the rendering camera instead of the main camera
+            var cameraBillboard = instantiate.GetComponentInChildren<CameraBillboard>();
+            if (cameraBillboard != null)
+            {
+                cameraBillboard.CameraTransform = renderingCamera.transform;
+            }
+
             // Wait a frame to ensure all transforms and components are initialized
             await UniTask.Yield();
 
