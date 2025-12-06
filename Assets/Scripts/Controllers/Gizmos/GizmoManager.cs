@@ -29,6 +29,10 @@ namespace Stickman3D.Gizmos
         [SerializeField] private KeyCode rotationModeKey = KeyCode.R;
         [SerializeField] private KeyCode scaleModeKey = KeyCode.S;
 
+        [Header("References")]
+        [SerializeField] private HistoryController historyController;
+        [SerializeField] private TimelineController timelineController;
+
         public SceneNode SelectedObject { get; private set; }
         public GizmoMode CurrentMode 
         { 
@@ -58,6 +62,7 @@ namespace Stickman3D.Gizmos
         {
             HandleGizmoInput();
             UpdateInputState();
+            HandleObjectDeletion();
             HandleObjectSelection();
 
             if (SelectedObject == null)
@@ -119,6 +124,35 @@ namespace Stickman3D.Gizmos
             {
                 // Mouse just released
                 IsMouseDragging = false;
+            }
+        }
+
+        // Handle deletion of the selected object
+        private void HandleObjectDeletion()
+        {
+            if (SelectedObject == null)
+                return;
+
+            if (Input.GetKeyDown(KeyCode.Delete) || Input.GetKeyDown(KeyCode.Backspace))
+            {
+                var animation = timelineController.LoadedAnimation;
+
+                // Sanity check
+                if (!animation.ObjectMap.ContainsKey(SelectedObject.name))
+                {
+                    Debug.LogWarning("Tried to delete an object that does not exist in the animation.\n" +
+                        "More than likely, this is an object that was part of the default SceneNode Root prefab.");
+                    return;
+                }
+
+                var objectName = SelectedObject.name;
+
+                var resourcePath = timelineController.LoadedAnimation.ObjectMap[objectName];
+                var keyframes = timelineController.LoadedAnimation.KeyframeMap[objectName];
+
+                historyController.ExecuteCommand(new ObjectDeleteCommand(timelineController, objectName, resourcePath, keyframes));
+
+                SelectObject(null);
             }
         }
 
