@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 // NodePrimitive copied from examples but tweaked
 [ExecuteInEditMode]
@@ -32,6 +33,12 @@ public class NodePrimitive: MonoBehaviour {
         propertyBlock.SetMatrix("MyTRSMatrix", m);
         propertyBlock.SetColor("MyColor", MyColor);
         renderer.SetPropertyBlock(propertyBlock);
+
+        // Reset and reposition renderer bounds for proper camera frustum culling.
+        renderer.ResetBounds();
+        var bounds = renderer.bounds;
+        bounds.center = m.GetPosition();
+        renderer.bounds = bounds;
     }
 
 #if UNITY_EDITOR
