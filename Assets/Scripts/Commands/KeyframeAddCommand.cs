@@ -15,7 +15,12 @@
             this.newKeyframe = newKeyframe;
         }
 
-        public void Do() => animation.InsertKeyframe(keyframePath, newKeyframe);
+        public void Do()
+        {
+            animation.InsertKeyframe(keyframePath, newKeyframe);
+        
+            keyframeEditorController.SetCurrent(keyframePath, newKeyframe);
+        }
 
         public void Undo()
         {
