@@ -224,6 +224,9 @@ namespace Stickman3D
         }
         #endregion
 
+        // Load a new empty animation on start
+        private void Start() => LoadAnimation(new Animation());
+
         private void Update()
         {
             if (isPlaying)

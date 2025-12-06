@@ -72,7 +72,7 @@ Transform:
   m_GameObject: {fileID: 372917163962825818}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.35, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &395431543663034073
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 7543944006880953765}
   - component: {fileID: 5497838539499151073}
   - component: {fileID: 4059525829967434041}
+  - component: {fileID: 7325004036638967065}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -452,6 +453,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &7325004036638967065
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817183026775034957}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.067656375
+  m_Center: {x: 0.0000000037252903, y: 0, z: 0.0052923816}
 --- !u!1 &1254826630458117174
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,12 +627,12 @@ Transform:
   m_GameObject: {fileID: 1804379125827828199}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4532083022461115661}
   - {fileID: 9116935077298575308}
+  - {fileID: 4532083022461115661}
   - {fileID: 5546704557188841216}
   m_Father: {fileID: 5843372387128364680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -626,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: 0.1, z: -0.25}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &2001006772516476809
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +661,7 @@ GameObject:
   - component: {fileID: 7196433248885804164}
   - component: {fileID: 9190412082756321024}
   - component: {fileID: 4143679960561395552}
+  - component: {fileID: 5831752306524440850}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -731,6 +754,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &5831752306524440850
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001006772516476809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.045182556
+  m_Center: {x: 0.000000011175871, y: 0, z: 0.005292443}
 --- !u!1 &2117266800898426876
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +928,7 @@ Transform:
   m_GameObject: {fileID: 2280552512759156461}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -904,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.3, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &2328982952975526874
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +975,7 @@ Transform:
   m_GameObject: {fileID: 2328982952975526874}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -951,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: 0.275, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &2585121828123994192
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,8 +1008,9 @@ GameObject:
   - component: {fileID: 1443691442266627470}
   - component: {fileID: 3056657215333476927}
   - component: {fileID: 4354610543009164185}
+  - component: {fileID: 4635377641256568486}
   m_Layer: 6
-  m_Name: Joint
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1056,6 +1101,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!64 &4635377641256568486
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585121828123994192}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6027846575958225388, guid: c767a0ee9ae26d646b0d544ae37d0a50, type: 3}
 --- !u!1 &2785833029169290478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,8 +1148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2785833029169290478}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1092,7 +1159,7 @@ Transform:
   - {fileID: 3515302153803679600}
   - {fileID: 7519184146471608863}
   m_Father: {fileID: 3653630516547255715}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &7888627072577646891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,7 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: 1.25, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &3091673810631101366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1185,7 @@ GameObject:
   - component: {fileID: 2642585177152954415}
   - component: {fileID: 3891484282511150458}
   - component: {fileID: 194852351448375823}
+  - component: {fileID: 566973807127549995}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -1210,6 +1278,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &566973807127549995
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091673810631101366}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.067656375
+  m_Center: {x: 0.0000000037252903, y: 0, z: 0.005292441}
 --- !u!1 &3432998997828512613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1311,7 @@ GameObject:
   - component: {fileID: 1637945708103187264}
   - component: {fileID: 3866154587928529376}
   - component: {fileID: 7203839901076266684}
+  - component: {fileID: 8427567992400841711}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -1314,6 +1404,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &8427567992400841711
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432998997828512613}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.05749337
+  m_Center: {x: 0.000000007450581, y: 0, z: 0.005292391}
 --- !u!1 &3548629753445932052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1437,7 @@ GameObject:
   - component: {fileID: 4736687272248284581}
   - component: {fileID: 6054671665009794767}
   - component: {fileID: 4731813038575073102}
+  - component: {fileID: 4853976082297720632}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -1418,6 +1530,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &4853976082297720632
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548629753445932052}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.045182556
+  m_Center: {x: 0.000000011175871, y: 0, z: 0.0052923835}
 --- !u!1 &3788735155434721737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1577,7 @@ Transform:
   m_GameObject: {fileID: 3788735155434721737}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1465,7 +1598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.37, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &3926101528863722670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,6 +1611,7 @@ GameObject:
   - component: {fileID: 70153481872240565}
   - component: {fileID: 1397465309140120465}
   - component: {fileID: 2372159447268324381}
+  - component: {fileID: 8496451511940269938}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -1570,6 +1704,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &8496451511940269938
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926101528863722670}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.05749337
+  m_Center: {x: 0.000000007450581, y: 0, z: 0.0052924505}
 --- !u!1 &3996617297182818384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,6 +1737,7 @@ GameObject:
   - component: {fileID: 6947938458045043818}
   - component: {fileID: 7619856258656568744}
   - component: {fileID: 4640564927150336724}
+  - component: {fileID: 3451739273653813803}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -1674,6 +1830,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &3451739273653813803
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3996617297182818384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.05749337
+  m_Center: {x: 0.000000007450581, y: 0, z: 0.005292391}
 --- !u!1 &4025071186901941995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,7 +1877,7 @@ Transform:
   m_GameObject: {fileID: 4025071186901941995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.275, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1721,7 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.275, z: 0.07}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &4116531696938119124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,7 +2052,7 @@ Transform:
   m_GameObject: {fileID: 4602985144739121329}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1896,7 +2073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.37, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &4614016319406473742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,7 +2227,7 @@ Transform:
   m_GameObject: {fileID: 4861194211068554898}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.275, z: -0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2071,7 +2248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.275, z: -0.07}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &4979655715059500101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,7 +2275,7 @@ Transform:
   m_GameObject: {fileID: 4979655715059500101}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2119,7 +2296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: 0.1, z: 0.25}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &5089893711486569215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,6 +2436,7 @@ GameObject:
   - component: {fileID: 2822676548275686947}
   - component: {fileID: 5636649247194133167}
   - component: {fileID: 25365720049841794}
+  - component: {fileID: 275799407748461691}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -2351,6 +2529,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &275799407748461691
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5261812443559340976}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.14131296
+  m_Center: {x: 0.000000007450581, y: 0, z: 0.00000005215408}
 --- !u!1 &5273730440541695134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,7 +2576,7 @@ Transform:
   m_GameObject: {fileID: 5273730440541695134}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2397,7 +2596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.32, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &5908052729755845997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2623,7 @@ Transform:
   m_GameObject: {fileID: 5908052729755845997}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2444,7 +2643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.3, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &5940749401609110581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,6 +2656,7 @@ GameObject:
   - component: {fileID: 3954030783957178318}
   - component: {fileID: 3185131897530152757}
   - component: {fileID: 1858166620382951458}
+  - component: {fileID: 6611099923310697350}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -2549,6 +2749,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &6611099923310697350
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940749401609110581}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.045182556
+  m_Center: {x: 0.000000011175871, y: 0, z: 0.0052923984}
 --- !u!1 &6330474600962654208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,7 +2796,7 @@ Transform:
   m_GameObject: {fileID: 6330474600962654208}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2595,7 +2816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.32, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &6379623013437575917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,7 +3097,7 @@ Transform:
   m_GameObject: {fileID: 6995615752203054267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2898,7 +3119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.22, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &7224411461498825701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,10 +3258,10 @@ GameObject:
   - component: {fileID: 9116935077298575308}
   - component: {fileID: 4499458161519161562}
   - component: {fileID: 513519152354432429}
-  - component: {fileID: 2840971503218001103}
   - component: {fileID: 8177876982279637788}
+  - component: {fileID: 1589328507563967551}
   m_Layer: 6
-  m_Name: Mesh
+  m_Name: Joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3117,8 +3338,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2840971503218001103
-MeshCollider:
+--- !u!114 &8177876982279637788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7371622698719103725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d51351dcc462447b05941425156e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Stickman3D::NodePrimitive
+  MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
+  Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &1589328507563967551
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3135,24 +3370,9 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8635094425032570458, guid: c767a0ee9ae26d646b0d544ae37d0a50, type: 3}
---- !u!114 &8177876982279637788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371622698719103725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d51351dcc462447b05941425156e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Stickman3D::NodePrimitive
-  MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
-  Pivot: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Radius: 0.067656375
+  m_Center: {x: 0.0000000037252903, y: -0.000000014901161, z: 0.0052923816}
 --- !u!1 &7600118424340879811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,6 +3385,7 @@ GameObject:
   - component: {fileID: 7231733407952173361}
   - component: {fileID: 646431744696667630}
   - component: {fileID: 3804883164313999181}
+  - component: {fileID: 3870061035301214966}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -3257,6 +3478,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &3870061035301214966
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600118424340879811}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.067656375
+  m_Center: {x: 0.0000000037252903, y: 0, z: 0.005292441}
 --- !u!1 &7725050412805009065
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,6 +3511,7 @@ GameObject:
   - component: {fileID: 5131353942666975760}
   - component: {fileID: 8910025396810949402}
   - component: {fileID: 7690244101935930521}
+  - component: {fileID: 8050091378724173076}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -3361,6 +3604,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &8050091378724173076
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725050412805009065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.05749337
+  m_Center: {x: 0.000000007450581, y: 0, z: 0.0052924505}
 --- !u!1 &7746291371706813022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,6 +3637,7 @@ GameObject:
   - component: {fileID: 7073616503411273306}
   - component: {fileID: 269256776852191538}
   - component: {fileID: 2305020495991203830}
+  - component: {fileID: 2096247894916630813}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -3465,6 +3730,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &2096247894916630813
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746291371706813022}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.067656375
+  m_Center: {x: 0.0000000037252903, y: 0, z: 0.005292501}
 --- !u!1 &7904246178128852547
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,7 +3904,7 @@ Transform:
   m_GameObject: {fileID: 8229182173447994326}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3639,7 +3925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488b202d09980a943a624725281ce0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeOrigin: {x: 0, y: -0.35, z: 0}
+  NodeOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &8581148182780635585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3906,6 +4192,7 @@ GameObject:
   - component: {fileID: 7170047577411919530}
   - component: {fileID: 3932087767773682977}
   - component: {fileID: 3830001354289217840}
+  - component: {fileID: 3353079129514943282}
   m_Layer: 6
   m_Name: Joint
   m_TagString: Untagged
@@ -3998,6 +4285,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Stickman3D::NodePrimitive
   MyColor: {r: 0.8584906, g: 0.73756725, b: 0.44139376, a: 1}
   Pivot: {x: 0, y: 0, z: 0}
+--- !u!135 &3353079129514943282
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906072954531408881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.045182556
+  m_Center: {x: 0.000000011175871, y: 0, z: 0.0052923835}
 --- !u!1 &9042982117670535957
 GameObject:
   m_ObjectHideFlags: 0

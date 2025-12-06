@@ -11,24 +11,32 @@ namespace Stickman3D
         /// <summary>
         /// Length of animation in seconds.
         /// </summary>
+        [JsonIgnore]
         public float Length { get; set; } = 1.0f;
 
         /// <summary>
         /// Map of object name to a Resource path, pointing to a prefab to instantiate.
         /// </summary>
-        public Dictionary<string, string> ObjectMap { get; set; }
+        public Dictionary<string, string> ObjectMap { get; set; } = new();
 
         /// <summary>
         /// Map of SceneNode path to the list of Keyframes affecting that object.
         /// </summary>
-        public Dictionary<string, List<Keyframe>> KeyframeMap { get; set; }
+        public Dictionary<string, List<Keyframe>> KeyframeMap { get; set; } = new();
 
-        public bool InsertKeyframe(string path, in Keyframe keyframe)
+        public bool InsertKeyframe(string path, in Keyframe keyframe, bool createIfNoMap = true)
         {
             if (!KeyframeMap.ContainsKey(path))
             {
-                Debug.Log("Could not insert keyframe: path \'" + path + "\' does not exist!");
-                return false;
+                if (createIfNoMap)
+                {
+                    KeyframeMap[path] = new List<Keyframe>();
+                }
+                else
+                {
+                    Debug.Log("Could not insert keyframe: path \'" + path + "\' does not exist!");
+                    return false;
+                }
             }
 
             var index = KeyframeMap[path].BinarySearch(keyframe);
