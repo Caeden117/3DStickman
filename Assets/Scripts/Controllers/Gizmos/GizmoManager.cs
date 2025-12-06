@@ -131,7 +131,11 @@ namespace Stickman3D.Gizmos
 
             // Raycast into the world to find SceneNodes
             if (!Physics.Raycast(MouseRay, out var hit, Mathf.Infinity, sceneNodeLayer))
+            {
+                // No object hit, deselect current object
+                SelectObject(null);
                 return;
+            }
 
             // Try to find a SceneNode component on the hit object
             if (!hit.collider.TryGetComponent<SceneNode>(out var sceneNode))
@@ -152,13 +156,8 @@ namespace Stickman3D.Gizmos
         {
             SelectedObject = obj;
 
-            if (obj == null)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
+            gameObject.SetActive(obj != null);
 
-            gameObject.SetActive(true);
             UpdateGizmoVisibility();
         }
 
