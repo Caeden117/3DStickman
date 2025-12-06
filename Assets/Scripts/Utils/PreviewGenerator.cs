@@ -38,7 +38,7 @@ namespace Stickman3D
 
         private void FocusCameraOn(GameObject gameObject)
         {
-            var objectBounds = default(Bounds);
+            var objectBounds = new Bounds(transform.position, Vector3.zero);
 
             // Calculate the combined bounds of all renderers in the object, used for positioning the camera
             var allRenderers = gameObject.GetComponentsInChildren<Renderer>(); 
@@ -46,7 +46,7 @@ namespace Stickman3D
             {
                 foreach (var renderer in allRenderers)
                 {
-                    objectBounds.Encapsulate(renderer.localBounds);
+                    objectBounds.Encapsulate(renderer.bounds);
                 }
             }
 
@@ -58,7 +58,7 @@ namespace Stickman3D
 
             // Position the camera to look at the center of the object from the calculated distance
             var cameraPosition = objectCenter - (distance * renderingCamera.transform.forward);
-            renderingCamera.transform.localPosition = cameraPosition;
+            renderingCamera.transform.position = cameraPosition;
         }
     }
 }
