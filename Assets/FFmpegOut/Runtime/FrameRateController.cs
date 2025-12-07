@@ -9,8 +9,8 @@ namespace FFmpegOut
     [AddComponentMenu("FFmpegOut/Frame Rate Controller")]
     public sealed class FrameRateController : MonoBehaviour
     {
-        [SerializeField] float _frameRate = 60;
-        [SerializeField] bool _offlineMode = true;
+        public float Framerate = 60;
+        public bool OfflineMode = true;
 
         int _originalFrameRate;
         int _originalVSyncCount;
@@ -34,17 +34,17 @@ namespace FFmpegOut
             }
 
             // Return a positive value if it's divisible by the frame rate.
-            if (Mathf.Approximately(f_rate % _frameRate, 0))
-                return Mathf.RoundToInt(f_rate / _frameRate);
+            if (Mathf.Approximately(f_rate % Framerate, 0))
+                return Mathf.RoundToInt(f_rate / Framerate);
             else
                 return 0; // Don't use v-sync.
         }
 
         void OnEnable()
         {
-            var ifps = Mathf.RoundToInt(_frameRate);
+            var ifps = Mathf.RoundToInt(Framerate);
 
-            if (_offlineMode)
+            if (OfflineMode)
             {
                 _originalFrameRate = Time.captureFramerate;
                 Time.captureFramerate = ifps;
@@ -60,7 +60,7 @@ namespace FFmpegOut
 
         void OnDisable()
         {
-            if (_offlineMode)
+            if (OfflineMode)
             {
                 Time.captureFramerate = _originalFrameRate;
             }

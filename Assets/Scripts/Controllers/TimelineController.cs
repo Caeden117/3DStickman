@@ -231,7 +231,13 @@ namespace Stickman3D
         {
             if (isPlaying)
             {
-                currentTime = Mathf.Repeat(currentTime + Time.deltaTime, LoadedAnimation.Length);
+                currentTime += Time.deltaTime;
+                
+                if (currentTime > LoadedAnimation.Length)
+                {
+                    currentTime = LoadedAnimation.Length;
+                    isPlaying = false;
+                }
             }
             InterpolateAnimation(currentTime);
             HandleInput();
@@ -262,10 +268,7 @@ namespace Stickman3D
             }
             if (Input.GetKeyDown(KeyCode.RightBracket))
             {
-                if (LoadedAnimation != null)
-                {
-                    CurrentSeconds = LoadedAnimation.Length;
-                }
+                CurrentSeconds = LoadedAnimation.Length;
             }
         }
     }
