@@ -2370,10 +2370,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1042368841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 64, y: -24}
-  m_SizeDelta: {x: 32, y: 32}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 32, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532346520
 MonoBehaviour:
@@ -6245,10 +6245,10 @@ RectTransform:
   - {fileID: 540764468}
   m_Father: {fileID: 1979975205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1116, y: -24}
-  m_SizeDelta: {x: 256, y: 32}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 256, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266737032
 MonoBehaviour:
@@ -6733,6 +6733,7 @@ MonoBehaviour:
   keyframeEditorController: {fileID: 656568946}
   timelineController: {fileID: 888422663}
   historyController: {fileID: 2014072754}
+  gizmoManager: {fileID: 577104959}
   trackPathLabelWidth: 256
   timeOffsetStart: 0
 --- !u!1001 &1428377996
@@ -9689,10 +9690,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1042368841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24, y: -24}
-  m_SizeDelta: {x: 32, y: 32}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 32, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976739861
 MonoBehaviour:

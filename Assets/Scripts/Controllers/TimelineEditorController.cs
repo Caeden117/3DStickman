@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Stickman3D.Gizmos;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -58,6 +59,9 @@ namespace Stickman3D
 
         [SerializeField]
         private HistoryController historyController;
+
+        [SerializeField]
+        private GizmoManager gizmoManager;
 
         /// <summary>
         /// The pixel resolution per second at the default zoom (1.0f).
@@ -247,6 +251,12 @@ namespace Stickman3D
                     trackObject.Keyframes = keyframeMap[path];
                     trackObject.OnKeyframeClick.AddListener(delegate (Keyframe keyframe)
                     {
+                        var sceneNode = timelineController.GetNodeAtPath(path);
+                        if (sceneNode != null)
+                        {
+                            gizmoManager.SelectObject(sceneNode);
+                        }
+
                         keyframeEditorController.SetCurrent(path, keyframe);
                     });
                     trackObjects.Add(path, trackObject);
