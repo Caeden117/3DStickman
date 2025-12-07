@@ -18,6 +18,9 @@ namespace Stickman3D
         [SerializeField] private TimelineController timelineController;
         [SerializeField] private HistoryController historyController;
 
+        [Header("")]
+        [SerializeField] private GameObject menuObject;
+
         private SceneNode[] objectsInResouces;
         private readonly List<RenderTexture> previewTextures = new();
 
@@ -75,6 +78,9 @@ namespace Stickman3D
 
             // Execute the creation action in the history controller
             historyController.ExecuteCommand(new ObjectAddCommand(timelineController, objectName, resourcePath));
+
+            // Close the menu after creating the object
+            menuObject.SetActive(false);
         }
 
         private void OnDestroy()
