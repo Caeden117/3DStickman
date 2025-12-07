@@ -11,8 +11,13 @@ namespace Stickman3D
         [SerializeField] private TimelineController timelineController;
         [SerializeField] private HistoryController historyController;
 
+        private bool isOperating = false;
+
         private void Update()
         {
+            // Early return if already performing an operation (should prevent duplicates).
+            if (isOperating) return;
+
             // Early return if Ctrl is not held down.
             if (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))
                 return;
@@ -28,7 +33,11 @@ namespace Stickman3D
         // Invokes UniTask to save the animation asynchronously.
         // UniTask will handle the method internally so we can forget about it here.
         public void OpenSavePanel()
-            => StandaloneFileBrowser.SaveFilePanelAsync("Save Animation", "", "animation.json", "json", path => SaveAnimationAsync(path).Forget());
+        {
+            if (isOperating) return;
+
+            StandaloneFileBrowser.SaveFilePanelAsync("Save Animation", "", "animation.json", "json", path => SaveAnimationAsync(path).Forget());
+        }
 
         // Asynchronously saves the current animation to the specified path.
         private async UniTask SaveAnimationAsync(string path)
@@ -38,6 +47,8 @@ namespace Stickman3D
                 Debug.Log("Save operation cancelled or invalid path.");
                 return;
             }
+
+            isOperating = true;
 
             // We are executing on the main Unity thread by default. Switch to a thread pool so these operations don't cause lag.
             await UniTask.SwitchToThreadPool();
@@ -50,13 +61,19 @@ namespace Stickman3D
 
             // Finally (just for good practice), switch back to the main thread.
             await UniTask.SwitchToMainThread();
+
+            isOperating = false;
         }
         #endregion
 
         #region Loading
         // Invokes UniTask to load the animation asynchronously.
         public void OpenOpenPanel()
-            => StandaloneFileBrowser.OpenFilePanelAsync("Open Animation", "", "json", false, paths => LoadAnimationAsync(paths).Forget());
+        {
+            if (isOperating) return;
+
+            StandaloneFileBrowser.OpenFilePanelAsync("Open Animation", "", "json", false, paths => LoadAnimationAsync(paths).Forget());
+        }
 
         private async UniTask LoadAnimationAsync(string[] paths)
         {
@@ -65,6 +82,8 @@ namespace Stickman3D
                 Debug.Log("Open operation cancelled or invalid path.");
                 return;
             }
+
+            isOperating = true;
 
             // Switch to thread pool for reading and deserializing
             await UniTask.SwitchToThreadPool();
@@ -83,6 +102,7 @@ namespace Stickman3D
             // Clears command history since all previous commands are no longer relevant.
             historyController.Clear();
             timelineController.LoadAnimation(animation);
+            isOperating = false;
         }
         #endregion
     }
