@@ -17,14 +17,37 @@ namespace Stickman3D
         [SerializeField] private CameraCapture renderCameraPrefab;
         [SerializeField] private Button renderButton;
 
-        private void Start() => renderButton.interactable = FFmpegPipe.IsAvailable;
+        private void Start()
+        {
+            if (!FFmpegPipe.IsAvailable)
+            {
+                Debug.LogWarning("FFmpeg is not available. Animation rendering is disabled.");
+                renderButton.interactable = false;
+                gameObject.SetActive(false);
+            }
+        }
+
+        private void Update()
+        {
+            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.R))
+            {
+                OpenRenderPanel();
+            }
+        }
 
         public void OpenRenderPanel()
-            => StandaloneFileBrowser.SaveFilePanelAsync("Save Animation", "", "animation.mp4", "mp4",
+        {
+            if (!FFmpegPipe.IsAvailable) return;
+
+            StandaloneFileBrowser.SaveFilePanelAsync("Save Animation", "", "animation.mp4", "mp4",
                 p => RenderAnimationAsync(p).Forget());
+        }
 
         public async UniTask RenderAnimationAsync(string path)
         {
+            if (string.IsNullOrEmpty(path) || !FFmpegPipe.IsAvailable)
+                return;
+
             // Reset timeline to first frame
             timelineController.IsPlaying = false;
             timelineController.CurrentFrame = 0;
