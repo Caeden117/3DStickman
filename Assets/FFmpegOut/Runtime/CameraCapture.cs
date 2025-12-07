@@ -45,6 +45,8 @@ namespace FFmpegOut
             set => _session = value;
         }
 
+        public RenderTexture CameraOutput => _tempRT;
+
         #endregion
 
         #region Private members

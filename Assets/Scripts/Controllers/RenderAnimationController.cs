@@ -9,6 +9,9 @@ namespace Stickman3D
 {
     public class RenderAnimationController : MonoBehaviour
     {
+        // HACK: i dont like this static bool but input needs to be disabled during rendering and this is the easiest way
+        public static bool IsRendering = false;
+
         private const int animationWidth = 1920;
         private const int animationHeight = 1080;
         private const string animationCameraPath = "Animation Camera";
@@ -16,6 +19,11 @@ namespace Stickman3D
         [SerializeField] private TimelineController timelineController;
         [SerializeField] private CameraCapture renderCameraPrefab;
         [SerializeField] private Button renderButton;
+
+        [Header("During Rendering")]
+        [SerializeField] private GameObject[] objectsToDisable;
+        [SerializeField] private GameObject[] objectsToEnable;
+        [SerializeField] private RawImage renderOverlay;
 
         private void Start()
         {
@@ -87,9 +95,15 @@ namespace Stickman3D
         
             renderCamera.fieldOfView = animationCamera.fieldOfView;
 
+            ToggleObjects(true);
+
             // Start rendering frames
             renderCameraObject.SetActive(true);
             timelineController.IsPlaying = true;
+
+            // Wait until later in the frame loop to ensure that render capture has a RenderTexture to display
+            await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
+            renderOverlay.texture = renderCameraCapture.CameraOutput;
 
             // Wait until rendering is complete
             await UniTask.WaitWhile(() => timelineController.IsPlaying);
@@ -97,10 +111,25 @@ namespace Stickman3D
             // Reset timeline to first frame
             timelineController.CurrentFrame = 0;
 
-            // Destroy render camera
+            // Cleanup
             // FFMpeg session will be disposed automatically
             DestroyImmediate(renderCameraObject);
+            ToggleObjects(false);
             Debug.Log("Rendering completed: " + path);
+        }
+
+        private void ToggleObjects(bool isRendering)
+        {
+            IsRendering = isRendering;
+
+            foreach (var obj in objectsToDisable)
+            {
+                obj.SetActive(!isRendering);
+            }
+            foreach (var obj in objectsToEnable)
+            {
+                obj.SetActive(isRendering);
+            }
         }
     }
 }

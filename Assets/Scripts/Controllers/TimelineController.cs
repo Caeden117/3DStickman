@@ -245,6 +245,8 @@ namespace Stickman3D
 
         private void HandleInput()
         {
+            if (RenderAnimationController.IsRendering) return;
+
             // Playback toggle
             if (Input.GetKeyDown(KeyCode.Space))
             {
