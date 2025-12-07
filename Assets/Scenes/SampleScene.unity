@@ -2836,6 +2836,8 @@ MonoBehaviour:
   scaleModeKey: 115
   historyController: {fileID: 2014072754}
   timelineController: {fileID: 888422663}
+  baseGizmoScale: 1
+  screenSizeMultiplier: 0.02
 --- !u!4 &577104960
 Transform:
   m_ObjectHideFlags: 0

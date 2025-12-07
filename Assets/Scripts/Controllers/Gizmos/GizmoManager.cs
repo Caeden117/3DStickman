@@ -33,6 +33,10 @@ namespace Stickman3D.Gizmos
         [SerializeField] private HistoryController historyController;
         [SerializeField] private TimelineController timelineController;
 
+        [Header("Display Settings")]
+        [SerializeField] private float baseGizmoScale = 0.1f;
+        [SerializeField] private float screenSizeMultiplier = 0.02f;
+
         public SceneNode SelectedObject { get; private set; }
         public GizmoMode CurrentMode 
         { 
@@ -55,8 +59,13 @@ namespace Stickman3D.Gizmos
         public LayerMask GizmoLayer => gizmoLayer;
 
         private GizmoController currentActiveGizmo;
+        private Camera mainCamera;
 
-        private void Start() => UpdateGizmoVisibility();
+        private void Start()
+        {
+            mainCamera = Camera.main;
+            UpdateGizmoVisibility();
+        }
 
         private void Update()
         {
@@ -71,6 +80,9 @@ namespace Stickman3D.Gizmos
             // Update gizmo position to match selected object
             SelectedObject.transform.GetPositionAndRotation(out var pos, out var rot);
             transform.SetPositionAndRotation(pos, rot);
+
+            // Update gizmo scale based on distance to camera
+            UpdateGizmoScale(pos);
 
             // Handle input through the active gizmo
             if (currentActiveGizmo != null)
@@ -181,6 +193,14 @@ namespace Stickman3D.Gizmos
 
             // Select the SceneNode (or null if not found)
             SelectObject(sceneNode);
+        }
+
+        // Update gizmo scale based on distance to camera
+        private void UpdateGizmoScale(Vector3 gizmoPosition)
+        {
+            var distance = Vector3.Distance(mainCamera.transform.position, gizmoPosition);
+            var scale =  baseGizmoScale * distance * screenSizeMultiplier;
+            transform.localScale = scale * Vector3.one;
         }
 
         /// <summary>
