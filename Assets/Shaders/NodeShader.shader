@@ -12,6 +12,8 @@ Shader "Unlit/NodeShader"
 
 		// Shared code between base and add passes
 		CGINCLUDE
+		#pragma multi_compile_fog
+
 		#include "UnityCG.cginc"
 		#include "Lighting.cginc"
 		#include "AutoLight.cginc"
@@ -34,6 +36,7 @@ Shader "Unlit/NodeShader"
 			float3 worldNormal : TEXCOORD1;
 			float3 worldPos : TEXCOORD2;
 			SHADOW_COORDS(3)
+			UNITY_FOG_COORDS(4)
 		};
 
 		v2f vert (appdata v)
@@ -52,6 +55,7 @@ Shader "Unlit/NodeShader"
 			o.uv = v.uv;
 			
 			TRANSFER_SHADOW(o)
+			UNITY_TRANSFER_FOG(o, o.pos);
 			
 			return o;
 		}
@@ -89,9 +93,9 @@ Shader "Unlit/NodeShader"
 				diffuse *= shadow;
 				
 				// Combine lighting
-				fixed3 finalColor = ambient + diffuse;
-				
-				return fixed4(finalColor, albedo.a);
+				fixed4 finalColor = fixed4(ambient + diffuse, albedo.a);
+				UNITY_APPLY_FOG(i.fogCoord, finalColor);
+				return finalColor;
 			}
 			ENDCG
 		}
@@ -140,7 +144,7 @@ Shader "Unlit/NodeShader"
 				// Apply shadows
 				fixed shadow = SHADOW_ATTENUATION(i);
 				diffuse *= shadow;
-				
+				UNITY_APPLY_FOG(i.fogCoord, diffuse);
 				return fixed4(diffuse, 0);
 			}
 			ENDCG
