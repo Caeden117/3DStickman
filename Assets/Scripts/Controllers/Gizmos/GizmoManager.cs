@@ -209,9 +209,6 @@ namespace Stickman3D.Gizmos
         public void SelectObject(SceneNode obj)
         {
             SelectedObject = obj;
-
-            gameObject.SetActive(obj != null);
-
             UpdateGizmoVisibility();
         }
 
