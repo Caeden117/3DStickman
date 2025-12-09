@@ -66,6 +66,11 @@ namespace Stickman3D
         private readonly Dictionary<string, SceneNode> sceneNodeMap = new();
 
         /// <summary>
+        /// Loads a new empty Animation.
+        /// </summary>
+        public void StartNewAnimation() => LoadAnimation(new Animation());
+
+        /// <summary>
         /// Loads a new Animation, clearing the root node and instantiating objects as per the ObjectMap.
         /// </summary>
         public void LoadAnimation(Animation animation)
@@ -225,7 +230,7 @@ namespace Stickman3D
         #endregion
 
         // Load a new empty animation on start
-        private void Start() => LoadAnimation(new Animation());
+        private void Start() => StartNewAnimation();
 
         private void Update()
         {

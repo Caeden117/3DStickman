@@ -226,12 +226,13 @@ namespace Stickman3D
 
             // Refresh tracks.
 
+            var oldKeyframeMap = cachedAnimation?.KeyframeMap ?? new();
             var keyframeMap = timelineController.LoadedAnimation.KeyframeMap;
             var hardRefresh = cachedAnimation != null && cachedAnimation != timelineController.LoadedAnimation;
             cachedAnimation = timelineController.LoadedAnimation;
 
             // Remove deleted tracks.
-            foreach (var path in keyframeMap.Keys)
+            foreach (var path in oldKeyframeMap.Keys)
             {
                 if ((!keyframeMap.ContainsKey(path) || hardRefresh) && trackObjects.ContainsKey(path))
                 {
